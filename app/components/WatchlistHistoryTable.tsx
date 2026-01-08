@@ -212,8 +212,15 @@ export default function WatchlistHistoryTable() {
                     <td style={{ padding: '0.75rem 1rem', textAlign: 'right', fontVariantNumeric: 'tabular-nums', fontSize: '0.9rem' }}>
                       {formatNumber(record.barang_bandar)}
                     </td>
-                    <td style={{ padding: '0.75rem 1rem', textAlign: 'right', fontVariantNumeric: 'tabular-nums', fontSize: '0.9rem' }}>
-                      {formatNumber(record.rata_rata_bandar)}
+                    <td style={{ padding: '0.5rem 1rem', textAlign: 'right', verticalAlign: 'middle' }}>
+                      <div style={{ fontWeight: 600, fontVariantNumeric: 'tabular-nums', fontSize: '0.95rem' }}>
+                        {formatNumber(record.rata_rata_bandar)}
+                      </div>
+                      {record.rata_rata_bandar && record.harga && record.rata_rata_bandar < record.harga && (
+                        <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                          {calculateGain(record.rata_rata_bandar, record.harga)}
+                        </div>
+                      )}
                     </td>
                     <td style={{ padding: '0.75rem 1rem', textAlign: 'center' }}>
                       {record.status === 'success' ? (

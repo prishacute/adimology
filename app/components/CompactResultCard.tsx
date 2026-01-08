@@ -42,6 +42,11 @@ export default function CompactResultCard({ result }: CompactResultCardProps) {
           <div className="compact-cell">
             <span className="compact-label">Avg Harga</span>
             <span className="compact-value">Rp {formatNumber(stockbitData.rataRataBandar)}</span>
+            {stockbitData.rataRataBandar && marketData.harga && stockbitData.rataRataBandar < marketData.harga && (
+              <span style={{ fontSize: '0.65rem', color: '#888', marginTop: '2px', display: 'block' }}>
+                +{(((marketData.harga - stockbitData.rataRataBandar) / stockbitData.rataRataBandar) * 100).toFixed(1)}%
+              </span>
+            )}
           </div>
         </div>
       </div>
